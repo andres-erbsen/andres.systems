@@ -1,0 +1,36 @@
+TEMPLATES = site.tmpl
+SOURCE = src
+OUTPUT = site
+TITLE = Andres
+URL = http://andres.tedx.ee/
+AUTHOR = Andres
+
+blog/*.md:
+	config
+	ext .html
+	directorify
+	tags tags/*.tag
+	:pandoc --mathml --smart
+	template post
+	template page
+
+*.md:
+	ext .html
+	directorify
+	:pandoc --mathml --smart
+	template page
+
+*.tag: blog/*.md
+	ext .html
+	directorify
+	template tag
+	:pandoc --mathml --smart
+	template page
+
+blog.atom: blog/*.md
+	inner-template
+
+blog/index.html: blog/*.md
+	config
+	inner-template
+	template page

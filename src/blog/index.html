@@ -1,0 +1,7 @@
+title: Blog
+----
+<ul class="post-list">
+{{ range .Site.Pages.Children "blog/" }}
+  <li style="list-style: none;">{{ template "date" .Date }} - <a href="{{ $.Rel .Url }}">{{ .Title }}</a>
+{{ end }}
+</ul>

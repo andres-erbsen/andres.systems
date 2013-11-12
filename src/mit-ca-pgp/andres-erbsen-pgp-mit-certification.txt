@@ -1,0 +1,59 @@
+Certificate:
+    Data:
+        Version: 3 (0x2)
+        Serial Number:
+            2e:7d:3b:f9:9e:a3:c8:dc:51:52:cb:53:16:80:31:43
+    Signature Algorithm: sha1WithRSAEncryption
+        Issuer: C=US, ST=Massachusetts, O=Massachusetts Institute of Technology, OU=Client CA v1
+        Validity
+            Not Before: Aug 17 17:37:39 2013 GMT
+            Not After : Jul 31 17:37:39 2014 GMT
+        Subject: C=US, ST=Massachusetts, O=Massachusetts Institute of Technology, OU=Client CA v1, CN=Andres Erbsen/emailAddress=andreser@MIT.EDU
+        Subject Public Key Info:
+            Public Key Algorithm: rsaEncryption
+                Public-Key: (2048 bit)
+                Modulus:
+                    00:c8:8e:7e:0b:eb:8a:46:33:03:75:28:d1:b2:6b:
+                    f9:27:ca:d1:1b:d8:9b:e3:c1:76:da:1f:03:91:33:
+                    0c:c7:b9:c8:30:09:1d:92:de:6b:ff:8b:21:bc:c5:
+                    9c:3e:08:a2:73:7d:df:51:66:22:d9:0d:7b:3b:df:
+                    a7:59:15:aa:ff:cb:19:72:6a:6a:1e:a5:6a:b0:38:
+                    3e:78:5f:7f:cd:f6:c2:db:8c:0d:a4:88:ce:b5:8c:
+                    fd:65:77:a4:57:93:9a:a8:4d:74:0b:1a:3e:e0:26:
+                    d6:16:e6:3f:b2:bd:2c:8f:65:ad:d5:51:73:4a:62:
+                    c2:9b:db:e3:a4:1c:80:52:f2:5a:10:99:2c:dc:09:
+                    26:7d:3d:34:f5:45:ba:8f:72:02:a5:4c:20:5f:0c:
+                    fe:6b:5c:53:2c:d0:7c:cb:4a:df:f8:af:e9:50:dd:
+                    3b:da:c5:e3:8c:c9:59:7f:72:01:01:8f:50:72:0b:
+                    a2:3a:d4:15:01:16:6a:2b:f4:3f:ae:48:c1:c1:29:
+                    c9:00:a2:ab:f5:24:88:32:c9:1e:07:87:08:d4:c5:
+                    1d:23:14:9e:48:f9:b3:65:c9:dc:54:e3:7b:dd:e6:
+                    74:ff:8c:99:c0:db:0f:00:83:2d:a1:8f:f7:85:e1:
+                    fd:06:12:5d:33:ec:e5:8b:0a:a9:40:28:57:c3:b2:
+                    b0:7f
+                Exponent: 65537 (0x10001)
+        X509v3 extensions:
+            X509v3 Basic Constraints: 
+                CA:FALSE
+            Netscape Cert Type: 
+                SSL Client, S/MIME
+            X509v3 Extended Key Usage: 
+                E-mail Protection, TLS Web Client Authentication
+            X509v3 Key Usage: 
+                Digital Signature, Non Repudiation, Key Encipherment
+            X509v3 Subject Key Identifier: 
+                A0:A6:BD:50:11:54:1F:10:4A:E5:7B:94:1B:DD:44:3D:7F:C7:79:FD
+            X509v3 CRL Distribution Points: 
+
+                Full Name:
+                  URI:http://ca.mit.edu/ca/mitclient.crl
+
+    Signature Algorithm: sha1WithRSAEncryption
+         82:52:d8:06:9f:fd:41:50:16:bb:f2:a0:ce:54:44:e2:86:17:
+         6b:4d:d9:dd:56:2b:a8:2e:0f:42:49:93:cf:43:57:a7:0f:25:
+         99:ba:1a:1b:e4:6b:c4:0c:b2:c3:e7:e7:05:84:25:32:e4:f7:
+         ba:71:97:53:88:a8:ad:c7:9d:d2:29:d7:27:03:08:be:cd:41:
+         a1:04:3a:be:91:23:72:d2:3b:42:52:20:c4:e3:5c:7e:97:44:
+         a7:3a:da:ae:c6:cf:32:04:c7:1c:af:4f:d8:87:da:66:d9:58:
+         04:65:74:ca:0f:40:a7:cb:d3:21:db:12:c2:14:3c:b6:d7:45:
+         96:eb

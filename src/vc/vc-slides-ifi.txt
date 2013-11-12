@@ -1,0 +1,507 @@
+% Routing and route finding in unstructured networks
+% Andres Erbsen; Sandra Schumann
+% December 5, 2012
+
+Who on earth are we anyway?
+---------------------------
+<!-- vim: set ts=4 sw=4 et tw=80 : -->
+
+\begin{columns}
+  \begin{column}{0.5\textwidth}
+    \begin{center}
+        \Large \href{https://github.com/andres-erbsen}
+                    {Andres Erbsen} \normalsize
+    \end{center}
+  \end{column}
+
+  \begin{column}{0.5\textwidth}
+     \begin{center}
+        \Large \href{https://github.com/sandra-schumann}
+                	{Sandra Schumann} \normalsize
+     \end{center}
+  \end{column}
+\end{columns}
+
+
+\begin{center}        
+\small Tallinn Secondary Science School, 12th grade \normalsize
+
+\small We like Haskell, Python, C++, Linux, the Unix way
+\end{center}
+\begin{columns}
+  \begin{column}{0.3\textwidth}
+    \begin{center}
+        Email prioritization
+        \\ \small Document processing: \normalsize
+        \\ \LaTeX{}, markdown
+    \end{center}
+  \end{column}
+
+
+  \begin{column}{0.3\textwidth}
+     \begin{center}
+        Statistics
+        \\ Teaching:
+        \\ Python and physics
+     \end{center}
+  \end{column}
+\end{columns}
+
+\begin{center}        
+We run a seminar at school
+
+\small Online courses from around the world: \normalsize \\
+AI. Algorithms. Crypto. Information Assurance. Robotics.
+
+\href{http://www.goodreads.com/author/quotes/108424.Patrick_Rothfuss}
+{\emph{It gets tiresome being spoken to as if you are a child,
+even if you happen to be one.}}
+-- \href{http://jehanara.files.wordpress.com/2009/04/nobodyknowsyoureadogontheinternet.jpg}
+{the good thing about the Internet}
+\end{center}
+
+Motivation
+==========
+
+Networks?
+---------
+\centerline{\includegraphics[height=3.1in]{nets.png}}
+
+
+Why?
+----
+
+> Since destruction of a small number of nodes in a decentralized network
+> can destroy communications, the properties, problems, and hopes of building
+> "distributed" communications networks are of paramount interest.
+
+\hfill -- [P. Baran, 1964. On Distributed Communications.](http://www.cs.ucla.edu/classes/cs217/Baran64.pdf)
+
+
+The Internet: between ISPs
+--------------------------
+\centerline{\includegraphics[height=3.1in]{internet.jpg}}
+
+
+The Internet: the problems appear
+---------------------------------
+
+- Internet protocol suite: proactive routing by address prefix
+- 42K [Autonomous Systems], [BGP] routing
+- An AS has many subordinates: $\frac{2^{32}}{42000} \approx 100000$
+- Inter-AS links must be in [BGP] tables
+- The [BGP] subgraph must be connected
+- Everyone is reached through exactly one AS
+- ...
+- (Normal) routers need to be told "the Internet is this way"
+- Most end-user devices are only capable of being leafs
+\hspace{1cm}
+- Lots of hacks and workarounds
+
+What has changed?
+-----------------
+\framesubtitle{This was already solved once!}
+
+- The internet design *is* based on good resarch
+- In 1964 there were mere *hopes* of building distributed networks
+\pause
+\hspace{0mm}
+
+- \large Diffie–Hellman–Merkle 1976: public-key cryptography
+- Fundamental change: all devices in a network do **not** have to trust each other ultimately to be mutually useful
+
+
+Political motivation
+--------------------
+
+> If we are going to build systems of communication for future politics, we’re
+> going to have to build them under the assumption that the network is not only
+> untrusted, but untrustworthy. We’re going to have to build under the
+> assumption that centralized services can kill you.
+
+> **Well, we can go back to mesh networking. We’ve got to go back to mesh
+> networking.**
+
+> Because we have friends in the street trying to create human freedom, and if
+> we don’t help them, they’ll get hurt. We rise to challenges, this is one.
+
+\hfill Eben Moglen (founder of SFLC, FreedomBox) [at FOSDEM 2011](http://www.softwarefreedom.org/events/2011/fosdem/moglen-fosdem-keynote-highlights.html)
+
+Goals
+=====
+
+Goals
+-----
+
+- Resiliency
+- Privacy (security)
+- Scalability
+
+Resiliency
+----------
+
+- Any device can connect to **any** other device*
+	- No NAT, no "port forwarding" needed
+	- Any user can run a public service (e.g. instant messaging)
+\pause
+
+- No built-in restrictions on the network structure
+	- Making use of redundancy is hard
+\pause
+
+- Automatisation - doable
+	- Manual (mis-)configuration is a common issue
+	- Human intervention: slow, expensive
+
+\footnotesize *as long as there exists a physical path \normalsize
+
+Privacy of the transferred data
+--------------------------------
+
+### [Confidentiality] against espionage
+When sending packet to someone, **only** they can read it.*
+
+\footnotesize \* Disclaimer: does not protect against untrustworthy recipients.
+\pause
+
+### [Integrity] against corruption and authentication forgery
+
+  - Packet came from who it says it came from.
+  - Packet has not been modified on the way.
+\pause
+
+### [Repudiability]
+The recipient cannot convince *anyone else* that the packet came
+from the sender (could have just made it up).
+\pause
+
+###
+**[Forward secrecy]** - requires another round trip at initialization
+
+Privacy of activity and identity
+--------------------------------
+
+- Efficiency tradeoff, thus optional
+- Quite like [TOR], but not bloat -- too easy not to do
+
+### Possible to hide from non-global adversaries
+- Who is that device connecting to?
+- What the route is?
+- Whose packets am I forwarding? To whom?
+- Who just connected to me? From where?
+- Are $A$ and $B$ talking to each other?
+
+Scalability
+-----------
+
+Keep enabling good connections as the network grows
+
+- Most mesh network protocols are $\Theta(n^2)$ 
+- Without sacrificing privacy (unlike [DART] and [Netsukuku])
+
+Billions of nodes - challenging
+
+Three goals
+----------------
+\centerline{\includegraphics[height=2.75in]{venn.png}}
+
+Three goals
+----------------
+\centerline{\includegraphics[height=2.75in]{venn2.png}}
+
+Summary
+-------------
+
+A good system...
+
+- is more **resilient** than an IP-based one
+- supports **privacy** comparable to [CurveCP] and [TOR] combined
+- **scales** better than [cjdns] (with hope to improve further)
+
+Means
+=====
+
+A new network ("internet") layer protocol
+-----------------------------------------
+
+\centerline{\includegraphics[height=3.1in]{ipstack.eps}}
+
+Extensible and non-uniform
+--------------------------
+
+- Different compromises between privacy and efficiency
+	- many servers are perfectly fine with publishing their location
+	- the same device may need a fast connection and an anonymous one
+	- anonymizing forwarders are useful but rare
+\pause
+
+- The client software *won't* be updated on time, tolerate that
+	- backwards compatability
+	- algorithm agility
+\pause
+
+- Route finding is hard, there are many ways to do it
+	- allow for different algorithms to be used in the same network
+	- separate route finding from routing
+	- make routes verifiable -- no more arp spoofing!
+
+The Basics
+----------
+
+- Devices: computers, cellphones, routers, fridges, VM-s...
+- Links: ethernet cables, wifi networks, [pigeons], fiber...
+\pause
+
+- A device - anything in the network that
+	- has an unambigous and verifiable identity
+\pause
+
+- A link - a promise to forward packets
+	- nobody can force them
+	- if we trust them, we know that the link works...
+	- ...otherwise just try, it still might
+	- digitally signed to prevent forgeries
+
+A device
+--------
+- Known by it's public signing key (hash of it)
+- Can and will be made to prove its identity
+	- decrypt something encrypted with their public key
+	- sign a challenge?
+- Other keys must be signed with the main key (like [PGP])
+\pause
+
+- No [CA]-s needed at this level
+- [Web of trust] is recommended
+
+Links
+------
+
+- Signed by both ends (like [SPROUT])
+- Terms of service included
+	- round trip time, minimal transmission unit
+	- "only for $X$"
+- Timestamp!
+
+- Links that lead from a device to another make a *route*
+	- anyone can compose routes
+	- digital signatures are still valid
+	- most link metrics can be combined into a route metric
+\pause
+
+- Even more links $\rightarrow$ graph
+	- shortest paths in a local subgraph of the network (like OSPF)
+	- extra: shortest disjoint paths for multiple connections
+
+Route finding vs routing
+-----------
+
+\Large \centerline{Separate route finding from routing}
+
+Routing
+-------
+
+The node who starts a connection specifies everything step by step
+and hop by hop. We don't think there is another way.
+\pause
+
+- Before any data is transferred, the connection is set up explicitly.
+	-	every node stores the next hop
+	-	 ... and the previous hop to prevent routing loops
+	-	negotiate cryptograpic algorithms and routing procedures
+\pause
+
+- Each packet needs just "connection id" field \pause
+- No source address, no destination address, no "options", no fragment info...
+
+Types of connections
+--------------------
+
+1. Private communication
+	- most of the traffic!
+	- encrypted, authenticated
+	- not that anonymous
+		- but still no world-readable address on the envelope
+\pause
+
+2. Best-effort anonymity
+	- protecting against comperhensive traffic analysis is very hard
+	- hard to distinguish from 1.
+	- onion-encryption (like TOR)
+	- throwing in intentional delays is easy
+\pause
+
+3. Public large data
+	- trade privacy for optimizations
+	- the privacy-oriented scheme is (like IP) costly to implement in hardware
+
+Flexibility
+-----------
+
+- All of these types can be mixed in the same connection
+- Per hop connection negotiation
+- The forwarders can and should be dumb
+
+What can an adversary do?
+---------------------------
+
+- Sniffing?
+- Man-in-the-middle attacks?
+- Misrouting packets?
+
+\pause
+
+The worst one can do: drop packets they promised to forward?
+
+\pause
+
+### Trust -- let's rely on experiences!
+They forwarded my packet 100 times -- probably will do it again.
+
+It hasn't worked 10 times in a row -- let's consider another route...
+\hspace{3mm}
+E.g., Bayesian statistics (with Laplace smoothing) could work.
+
+Route finding
+-------------
+
+- Difficult - there is always room for improvement
+\pause
+
+- Pluggable!
+
+\pause
+
+### Using arbitrary routing scheme for route finding
+- Information stored by devices remains unchanged
+- Instead of routing useful packets, traceroute
+	- save the descriptions of the traversed links
+	- get the result back to the sender
+
+A sane starting point
+-------------------
+
+- Store one's neighbourhood
+- Use Dijkstra's algorithm to find local routes
+- Store 'good enough' routes to some other nodes?
+
+\vspace{0.1mm}
+
+- Useful for building other schemes
+
+\vspace{0.1mm}
+
+- Notify other devices of changed links
+	- include information about the endpoints
+- Forward interesting notifications
+	- what's interesting to you, is probably also to your neighbours
+
+
+Existing solutions
+------------------
+
+- IP - prebuilt tree structure
+\pause
+- [cjdns] - random, always walk closer in address space
+\pause
+- [Netsukuku] and [DART] - recursively divide into groups
+
+Our solution
+------------
+
+- Every device has an "address"
+\pause
+- Sequences of 0s and 1s
+\pause
+
+\pause
+
+### Example
+1000101 \pause = 1000101000 \pause = 100010100000...
+
+Example of joining the network
+------------------------------
+\centerline{\includegraphics[height=3.1in]{networkexample1.eps}}
+
+Example of joining the network
+------------------------------
+\centerline{\includegraphics[height=2.5in]{joiningaddressexample1.eps}}
+
+Example of joining the network
+------------------------------
+\centerline{\includegraphics[height=3.1in]{networkexample2.eps}}
+
+Example of joining the network
+------------------------------
+\centerline{\includegraphics[height=2.5in]{joiningaddressexample2.eps}}
+
+Simulating cjdns
+----------------
+\centerline{\includegraphics[height=3.0in]{ba.png}}
+
+Comparison
+----------
+\centerline{\includegraphics[height=3.0in]{cjdns-vcrout.png}}
+
+
+What is your address?
+----------------------------------
+- Devices' addresses may change often
+	- This should not cause loss of connectivity
+\pause
+
+- [DHT] for identifier $\rightarrow$ address lookups
+- Address assignment must be signed -- no ambiguity
+\pause
+
+- Organising DHT by addresses instead of random ID-s decreases complexity
+
+
+Problems and plans
+------------------
+
+- Removing nodes works almost like adding them... \pause
+- Joining two networks is a mess \pause
+- Networks changing quickly cause flood \pause
+- Keep address allocation uniform to avoid long addresses \pause
+
+\vspace{0.1mm}
+
+- Implement the whole thing
+
+Backwards compatability
+-----------------------
+\framesubtitle{How to get this going...}
+
+- Seamlessly interconnect this kind of networks over the Internet
+	- easy
+	- like any other link
+- Connect back to internet over this
+	- needs thought, but doable 
+	- [Netsukuku] has a design for it
+	- just run OpenVPN over it
+
+
+
+
+
+
+
+[Autonomous Systems]: https://en.wikipedia.org/wiki/Autonomous_System_(Internet)
+[BGP]: https://en.wikipedia.org/wiki/Border_Gateway_Protocol
+[Confidentiality]: https://en.wikipedia.org/wiki/Information_security#Confidentiality
+[Integrity]: https://en.wikipedia.org/wiki/Information_security#Integrity
+[Repudiability]: http://cecc.amu.edu.pl/static/slides/Durnoga_cecc2010.pdf
+[Forward secrecy]: http://en.wikipedia.org/wiki/Perfect_forward_secrecy
+[TOR]: https://www.torproject.org/
+[DART]: http://dart.cs.ucr.edu/
+[Netsukuku]: http://netsukuku.freaknet.org/
+[CurveCP]: http://curvecp.org/index.html
+[cjdns]: http://cjdns.info/
+[PGP]: http://www.openpgp.org/
+[SPROUT]: http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.69.827
+[CA]: http://www.ivir.nl/publications/arnbak/paper_TPRC_2012.pdf
+[Web of trust]: http://en.wikipedia.org/wiki/Web_of_trust
+[Bayesian]: http://www.paulgraham.com/spam.html
+[DHT]: http://en.wikipedia.org/wiki/Distributed_hash_table
+[pigeons]: http://en.wikipedia.org/wiki/IP_over_Avian_Carriers
