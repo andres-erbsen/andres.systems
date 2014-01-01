@@ -34,8 +34,8 @@ difficult to do, there still is nothing more useless than not trying. If it
 takes learning, learn. If it takes dedication, please put in the effort but do
 not burn yourself out. This is your life, your world. Go. Do it. Now.
 
-Edited 2014-01-01 to remove a link to the prosecution of Jim Bell, which , even
-thoufh interesting by itself, does not by all interpretations support the point
+Edited 2014-01-01 to remove a link to the prosecution of Jim Bell, which, even
+though interesting by itself, does not by all interpretations support the point
 I am trying to make here.
 
 [30C3]: http://media.ccc.de/browse/congress/2013/
