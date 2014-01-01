@@ -3,7 +3,7 @@
 
 # Andres Erbsen
 
-[Blog](/blog/) -- [The network project](/vc/) -- [Code](https://github.com/andres-erbsen?tab=repositories) -- [Contact](/contact.txt)
+[Blog](/blog/) -- [Code](https://github.com/andres-erbsen?tab=repositories) -- [Contact](/contact.txt)
 
 \
 
