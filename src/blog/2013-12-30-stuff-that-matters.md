@@ -1,4 +1,4 @@
-title: stuff that matters
+title: Stuff that matters
 date: 2013-12-30
 tags: politics, privacy, growing-up
 ----

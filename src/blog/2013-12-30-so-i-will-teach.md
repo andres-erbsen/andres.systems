@@ -1,4 +1,4 @@
-title: so I will teach
+title: So I will teach
 date: 2013-12-30
 tags: privacy, politics
 ----

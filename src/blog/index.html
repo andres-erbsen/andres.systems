@@ -2,7 +2,7 @@ title: Blog
 ----
 <ul class="post-list">
 {{ range .Site.Pages.Children "blog/" }}
-  <li style="list-style: none;">{{ template "date" .Date }} - <a href="{{ $.Rel .Url }}">{{ .Title }}</a>
+	{{ if .Title }}<li style="list-style: none;">{{ template "date" .Date }} - <a href="{{ $.Rel .Url }}">{{ .Title }}</a> {{end}}
 {{ end }}
 </ul>
 <p><a href="../blogi/">et</a><p/>
