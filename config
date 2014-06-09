@@ -13,23 +13,8 @@ blog/*.md:
 	:pandoc --mathml --smart
 	template post
 	template page
-blogi/*.md:
-	config
-	ext .html
-	directorify
-	tags tags/*.tag
-	:pandoc --mathml --smart
-	template post
-	template page
 
-*.tag: blog/*.md
-	ext .html
-	directorify
-	template tag
-	:pandoc --mathml --smart
-	template page
-
-*.tag: blogi/*.md
+*.tag: blog/*.md blogi/*md
 	ext .html
 	directorify
 	template tag
@@ -39,18 +24,35 @@ blogi/*.md:
 blog.atom: blog/*.md
 	inner-template
 
-blog.atom: blogi/*.md
+blog/rss.xml: blog/*.md
 	inner-template
-
-blogi/index.html: blog/*.md
-	config
-	inner-template
-	template page
 
 blog/index.html: blog/*.md
 	config
 	inner-template
 	template page
+
+
+blogi/*.md:
+	config
+	ext .html
+	directorify
+	tags tags/*.tag
+	:pandoc --mathml --smart
+	template post
+	template page
+
+blogi/index.html: blogi/*.md
+	config
+	inner-template
+	template page
+
+blogi.atom: blogi/*.md
+	inner-template
+
+blogi/rss.xml: blogi/*.md
+	inner-template
+
 
 *.md:
 	ext .html

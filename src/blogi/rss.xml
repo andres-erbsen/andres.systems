@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<channel>
+  <atom:link href="{{.Site.Other.Url}}{{.Url}}" rel="self" type="application/rss+xml" />
+  <title>{{ .Site.Other.Title }}</title>
+  <link>{{ .Site.Other.Url }}</link>
+  <description></description>
+  {{ with .Site.Pages.Children "blogi/" }}
+  <lastBuildDate>{{ .First.Date.Format "Mon, 02 Jan 2006 15:04:05 -0700" }}</lastBuildDate>
+  {{ end }}
+  <generator>http://github.com/piranha/gostatic/</generator>
+
+  {{ with .Site.Pages.Children "blogi/" }}
+  {{ range .Slice 0 5 }}
+  <item>
+    <title>{{ .Title }}</title>
+	<link>{{ .Site.Other.Url }}{{ .Url }}</link>
+	<guid>{{ .Site.Other.Url }}{{ .Url }}</guid>
+    <description>
+      {{/* .Process runs here in case only feed changed */}}
+      {{ with cut .Process.Content "<section>" "</section>" }}
+        {{ html . }}
+      {{ end }}
+    </description>
+    <author>{{ or .Other.Author .Site.Other.Author }}</author>
+    <pubDate>{{ .Date.Format "Mon, 02 Jan 2006 15:04:05 -0700" }}</pubDate>
+  </item>
+  {{ end }}
+  {{ end }}
+</channel></rss>
