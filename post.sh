@@ -1,7 +1,12 @@
 #!/bin/bash
 
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 title="$@"
-name=$(echo "${title}" | tr -cs '[:alnum:]' - | tr '[:upper:]' '[:lower:]' | sed 's/-$//')
 date=$(date --rfc-3339=d)
-exec vim "${HOME}/andres.tedx.ee/src/blog/${date}-${name}.md" \
-	"+silent read !echo -e title: ${title}\\\\ndate: ${date}\\\\ntags:"
+name=$(echo "${date}-${title}" | tr -cs '[:alnum:]' - | tr '[:upper:]' '[:lower:]' | sed 's/-$//')
+
+cd $DIR
+gvim -n "$DIR/src/blog/${name}.md" \
+	"+silent read !echo -e title: ${title}\\\\ndate: ${date}\\\\ntags:" \
+	"+silent set directory \"${DIR}\""
+gostatic -w config
