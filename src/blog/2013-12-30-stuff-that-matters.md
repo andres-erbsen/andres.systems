@@ -32,11 +32,9 @@ understand what is really going on. Be the one who seeks out the people doing
 something about it or starts out on their own. If what you care about is
 difficult to do, there still is nothing more useless than not trying. If it
 takes learning, learn. If it takes dedication, please put in the effort but do
-not burn yourself out. This is your life, your world. Go. Do it. Now.
-
-Edited 2014-01-01 to remove a link to the prosecution of Jim Bell, which, even
-though interesting by itself, does not by all interpretations support the point
-I am trying to make here.
+not burn yourself out. This is your life, your world, and if it is at all
+possible to do something that matters about it, you can do it. And history has
+shown that is is possible. So go, do it.
 
 [30C3]: http://media.ccc.de/browse/congress/2013/
 [keynote]: http://media.ccc.de/browse/congress/2013/30C3_-_5622_-_en_-_saal_1_-_201312271930_-_30c3_keynote_-_glenn_greenwald_-_frank.html
