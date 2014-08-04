@@ -5,4 +5,12 @@ title: Blog
 	{{ if .Title }}<li style="list-style: none;">{{ template "date" .Date }} - <a href="{{ $.Rel .Url }}">{{ .Title }}</a> {{end}}
 {{ end }}
 </ul>
-<p><a href="../blogi/">et</a><p/>
+
+<p>
+	<a href="../blog.atom">atom</a>
+	<a href="rss.xml">rss</a>
+<p/>
+
+<p>
+	<a href="../blogi/">et</a>
+<p/>

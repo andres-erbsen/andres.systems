@@ -4,6 +4,7 @@
   <meta charset="utf-8">
   <meta name="author" content="{{ html .Site.Other.Author }}">
   <link rel="alternate" type="application/atom+xml" title="{{ html .Site.Other.Title }} feed" href="{{ .Rel "blog.atom" }}">
+  <link rel="alternate" type="application/rss+xml" title="{{ html .Site.Other.Title }} feed" href="{{ .Rel "blog/rss.xml" }}">
   <title>{{ .Site.Other.Title }}{{ if .Title }}: {{ .Title }}{{ end }}</title>
   <link rel="stylesheet" type="text/css" href="{{ .Rel "static/style.css" }}">
 </head>

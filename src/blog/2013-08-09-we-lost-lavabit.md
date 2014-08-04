@@ -27,7 +27,7 @@ However, if they do come back in any form that resembles what they used to
 be, I am most likely going to become a paid customer. As the folk wisdom
 says, the best evidence there can be that a privacy service is good is that
 they *have* been raided and sued, but even that did not make them leak. I
-expect the Lavabit is going to pass this test, at least for the paid
+expect that Lavabit is going to pass this test, at least for the paid
 customers -- if I remember correctly, they are literally unable to sell out
 their emails. Chance favors the prepared.
 

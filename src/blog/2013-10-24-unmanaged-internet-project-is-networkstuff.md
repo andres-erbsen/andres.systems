@@ -12,5 +12,5 @@ It seems that there is still work top be done to maximize the reliability, but
 for non-vapourware, the current state is pretty damn good.
 
 No surprise I didn't finish it during my two last years of high school. UIA is
-one persons doctoral thesis project, and the two of the six authors that are
+one person's doctoral thesis project, and the two of the six authors that are
 familiar to me are so because they are one of the best in this field.

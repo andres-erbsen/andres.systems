@@ -3,7 +3,7 @@
 
 # Andres Erbsen
 
-[Blog](/blog/) -- [Code](https://github.com/andres-erbsen?tab=repositories) -- [Contact](/contact.txt)
+[Blog](/blog/) -- [Code](https://github.com/andres-erbsen?tab=repositories) -- [Contact](/contact/)
 
 \
 
@@ -45,6 +45,10 @@
 competition programming: [algorithms mentioned in IOI syllabus](https://github.com/andres-erbsen/ioisyl), some [Project Euler](https://github.com/andres-erbsen/projecteuler) one-liners.
 
 Haskell: a sane definition of the [list of prime numbers](https://github.com/andres-erbsen/projecteuler/blob/master/Primes.hs).
+
+
+-------------
+This is a personal site. All opinions are mine and mine only. [`CC-BY-SA`](/copyright/).
 
 [Zooko's triangle]: http://en.wikipedia.org/wiki/Zooko's_triangle
 [anytrust model]: chrome-extension://oemmndcbldboiebfnladdacbdfmadadm/http://dedis.cs.yale.edu/dissent/papers/eurosec12.pdf
