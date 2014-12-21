@@ -12,7 +12,7 @@ though I am not able to talk to them. This is not not intermittent problem,
 Google XMPP support has always been lacking and interoperability is not a
 priority.
 
-EDIT: Apparently, this change does not apply to some contacts added before it.
+EDIT: Apparently, this change does not apply to *some* contacts added before it.
 Adding new contacts that use other servers to a GChat account still seems
 impossible.
 
@@ -26,11 +26,14 @@ For chat, you need a XMPP account at a standards-compliant server.
 - DuckDuckGo also offers an [XMPP service](https://duck.co/blog/using-pidgin-with-xmpp-jabber)
   that receives a rating of [B](https://xmpp.net/result.php?domain=dukgo.com&type=client) at the [IM Observatory].
   In-client account creation works as explained on their page, the address will be of form `you@dukgo.com`.
+- [`jabber.ccc.de`](http://web.jabber.ccc.de/) receives a raring of  [A](https://xmpp.net/result.php?domain=jabber.ccc.de&type=client). In-client account creation works as explained
+  [here](https://duck.co/blog/using-pidgin-with-xmpp-jabber), with an extra
+CAPTCHA step.
 - [`jabber.de`](http://www.jabber.de/) receives a rating of [A](https://xmpp.net/result.php?domain=jabber.de&type=client),
   but their homepage is in German. You can register an account [here](http://www.jabber.de/register/).
 - [`chatme.im`](http://chatme.im/) receives a rating of [A](https://xmpp.net/result.php?domain=chatme.im&type=client),
-  but their homepage is in Italian. In-client account creation works (as explained
-  [here](https://duck.co/blog/using-pidgin-with-xmpp-jabber)), but you may
+  but their homepage is in Italian. In-client account creation works as explained
+  [here](https://duck.co/blog/using-pidgin-with-xmpp-jabber), but you may
   need to click "Accept" to a certificate warning^[`chatme.im` gets their
   certificates from CACert, which is not allowed by default on most systems].
 - MIT accounts are also XMPP accounts.
@@ -46,6 +49,8 @@ I am disappointed by the general state of online communication. I do not think
 that XMPP is a silver bullet, I am even unsure whether it will succeed in of
 becoming *the* platform of instant messaging as many people hope it will, but I
 think it is less of a dead end than any other option I am aware of.
+
+`EDIT 2014-12-21:` Added `jabber.ccc.de` and emphasis to "some".
 
 [IM Observatory]: https://xmpp.net/directory.php
 [Communications platforms]:/blog/2013-08-11-communications-platforms/
