@@ -19,3 +19,6 @@ already getting a new domain, I also decided to set up email for it on a whim.
 Let's see how all this keeps together: I would not be too surprised if the
 answer was "not quite perfectly", after all, the domain name is the only piece
 I am paying for here is the domain name.
+
+EDIT: also revamped how the source is managed in git (the output site is a
+submodule of the source).
