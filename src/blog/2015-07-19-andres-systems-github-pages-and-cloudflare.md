@@ -21,4 +21,4 @@ answer was "not quite perfectly", after all, the domain name is the only piece
 I am paying for here is the domain name.
 
 EDIT: also revamped how the source is managed in git (the output site is a
-submodule of the source).
+submodule of the source using a Makefile).
