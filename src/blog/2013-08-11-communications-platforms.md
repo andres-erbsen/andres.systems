@@ -42,7 +42,7 @@ My service provider [promises](http://www.autistici.org/en/services.html)
 to take my privacy seriously and all evidence is consistent with their
 claims.
 
-- Email can be used privately with [OpenPGP](http://andres.tedx.ee/blog/2013-08-10-how-to-use-openpgp-for-email-in-1000-words/)
+- Email can be used privately with [OpenPGP](/blog/2013-08-10-how-to-use-openpgp-for-email-in-1000-words/)
 - XMPP (and other instant messaging protocols) can be used privately with
   [OTR](https://securityinabox.org/en/pidgin_main)
 - Jingle, the audio-video extension for XMPP, can be

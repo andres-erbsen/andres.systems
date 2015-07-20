@@ -16,7 +16,7 @@ EDIT: Apparently, this change does not apply to *some* contacts added before it.
 Adding new contacts that use other servers to a GChat account still seems
 impossible.
 
-I have hunch that the expected outcome of this move is that users of other
+I have a hunch that the expected outcome of this move is that users of other
 services will move to GChat. I will not, for the reasons outlined in an earlier
 post [Communications platforms]. If you have me on your GChat contact list right
 now, you will have to find another means to reach me. My XMPP address is also my

@@ -2,7 +2,7 @@ TEMPLATES = site.tmpl
 SOURCE = src
 OUTPUT = site
 TITLE = Andres
-URL = http://andres.tedx.ee/
+URL = https://andres.systems/
 AUTHOR = Andres
 
 blog/*.md:
