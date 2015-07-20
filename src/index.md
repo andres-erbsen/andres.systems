@@ -3,7 +3,7 @@
 
 # Andres Erbsen
 
-[Blog](/blog/) -- [Code](https://github.com/andres-erbsen?tab=repositories) -- [Contact](/contact/)
+[Blog](/blog/) -- [Code](https://github.com/andres-erbsen?tab=repositories) -- [Contact](/contact/) -- [Twitter](https://twitter.com/andreserbsen)
 
 \
 
