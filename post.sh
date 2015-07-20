@@ -14,3 +14,4 @@ cd "$DIR" &
 vim -n "$DIR/src/blog/${name}.md" \
 	"+silent read !echo -e title: ${title}\\\\ndate: ${date}\\\\ntags:\\\\n----\\\\n" \
 	"+silent set directory \"${DIR}\""
+make

@@ -1,7 +1,12 @@
 update: $(shell find src -print)
 	gostatic config -v
 site: $(shell find src -print)
-	rm -rf site
+	git diff --exit-code
+	rm -rf site/*
 	gostatic config -v -f
-rsync-athena: site
-	rsync -zaruv --delete site/. athena:web_scripts/.
+	cd site
+	git commit -m regenerate -a
+push: site
+	git push
+	cd site
+	git push
