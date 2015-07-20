@@ -10,5 +10,6 @@ site-build: $(shell find src -print) Makefile config site.tmpl last-commit-messa
 push: site
 	git push
 	( cd site && git push )
-last-commit-message.txt:
+last-commit-message.txt: .FORCE
 	git log --format=%B -n 1 > $@
+.FORCE:
