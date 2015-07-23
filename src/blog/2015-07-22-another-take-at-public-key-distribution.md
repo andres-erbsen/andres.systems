@@ -625,4 +625,4 @@ conflict is found, it can be published. Two different signed keyserver
 state summaries with the same same sequence number are indicative of
 misbehavior (be it a bug or an attack).
 
-This post is discussed at <https://moderncrypto.org/mail-archive/messaging/2015/001771.html>
+This post is discussed at <https://moderncrypto.org/mail-archive/messaging/2015/001771.html>.
