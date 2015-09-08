@@ -20,7 +20,7 @@ While this post represents my understanding (and not necessarily the
 understanding of anybody else), the design I am describing has benefited
 significantly from many contributions. Daniel Ziegler is a co-author
 with an essentially equal contribution throughout the last 3 iterations.
-The lookup rate-limiting design was ported directly from from CONIKS.
+The lookup rate-limiting design was ported directly from from [CONIKS](https://eprint.iacr.org/2014/1004.pdf).
 Adam Langley, Gary Belvin, Ian Goldberg, Ian Miers, Joe Bonneau, Madars
 Virza, Nickolai Zeldovich, Trevor Perrin, Yan Zhu and numerous others
 provided useful comments. Both MIT and Yahoo have funded me and Daniel
